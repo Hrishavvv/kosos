@@ -1,14 +1,8 @@
 # Kosos
 
-Kosos is a tiny teaching OS that boots with GRUB, draws to the VGA text buffer, reads the keyboard by polling the PS/2 controller, and exposes a slang-friendly CLI with a simple disk filesystem.
+Kosos or Kernel On a Sluggish Operating System
 
-## What it can do
-
-- Boot from a GRUB-based ISO image
-- Show text on the screen in 80x25 VGA mode
-- Accept keyboard input without interrupts
-- Run slang commands like `peek`, `slide`, `spawn`, `tag`, `spill`, and `where`
-- Create directories and files on a persistent IDE disk image
+Kosos is a small hobby OS with a kernel made from scratch, it can read/write fules using a FAT-like filesystem layout. It can do some basic maths and has its own set of commands for the kosos console. You can create files and write into them using a basic editor. It uses framebuffer and vga. It has its own custom made drivers for every other stuff :)
 
 ## Build
 
@@ -38,33 +32,24 @@ This creates `build/kosos-disk.img` (16 MB raw IDE disk).
 make run
 ```
 
-This attaches the ISO and the raw disk image to an IDE controller.
+## Flashing & Running in VirtualBox
 
-## Run in VirtualBox
+To test Kosos in VirtualBox or to write the ISO to a USB stick for real-hardware testing, follow these steps.
 
-1. Create a VM: Type "Other", Version "Other/Unknown (32-bit)", disable EFI.
-2. Attach the ISO: Storage -> Optical Drive -> choose `build/kosos.iso`.
-3. Convert the raw disk image to a VDI:
+- Run the ISO directly in VirtualBox:
 
 ```bash
-VBoxManage convertfromraw build/kosos-disk.img build/kosos-disk.vdi --format VDI
+# Create a new VM (Linux/Other 64-bit) and set the CD/DVD to use build/kosos.iso
+# Recommended: EFI off, enable IO APIC, 1-2 CPUs, 512MB-1GB RAM
+# Boot the VM and Kosos will start from the ISO
 ```
 
-4. Attach `build/kosos-disk.vdi` as an IDE Primary Master disk.
-5. Boot the VM.
-
-## Flash
-
-Write the ISO to a USB device with `dd`:
+- Write the ISO to a USB drive (careful: this will erase the drive). Replace `/dev/sdX` with your device:
 
 ```bash
-sudo make flash DEVICE=/dev/sdX
+sudo dd if=build/kosos.iso of=/dev/sdX bs=4M status=progress && sync
 ```
 
-Replace `/dev/sdX` with the target device. For persistent storage on real hardware, use a second disk or a dedicated partition attached as an IDE device.
+- In VirtualBox you can also attach the USB drive to the VM (use the VirtualBox USB passthrough) and boot from it. Alternatively, configure the VM to boot from the virtual CD using the ISO file.
 
-## Notes
 
-- The project is freestanding and does not use libc.
-- The current build uses GCC and GNU ld; NASM is not required.
-- If you want a hand-written bootloader instead of GRUB, that can be done next, but this version keeps the boot path simple and reliable.
