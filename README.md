@@ -1,8 +1,19 @@
-# Kosos
+<h1 align="center">Kosos</h1>
 
-Kosos or Kinda Okayish and Sluggish Operating System
+<p align="center">Kosos or Kinda Okayish &amp; Suggish Operating System</p>
 
-Kosos is a small hobby OS with a kernel made completely from scratch, it can read/write fules using a FAT-like filesystem layout. It can do some basic maths and has its own set of commands for the kosos console. You can create files and write into them using a basic editor. It has its own custom made drivers for every other stuff. I'm still tryna figure out stuff :)
+<p align="center">
+	Kosos is a small hobby OS made completely from scratch, it can read/write fules using a FAT-like filesystem layout.<br/>
+	It can do some basic maths and has its own set of commands for the kosos console.<br/>
+	You can create files and write into them using a basic file editor.<br/>
+	The KOSOS kernel is entirely made from scratch so this OS needs custom drivers for every other stuff and I'm still tryna figure out a lot of stuff :)
+</p>
+
+<p align="center">
+	<img src="console.gif" alt="Kosos console" />
+</p>
+
+
 
 ## Build
 
