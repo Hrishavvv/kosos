@@ -1,6 +1,6 @@
 <h1 align="center">Kosos</h1>
 
-<p align="center"><b>Kosos or Kinda Okayish &amp; Suggish Operating System</b></p>
+<p align="center"><i>Kosos or Kinda Okayish &amp; Sluggish Operating System</i></p>
 
 <p align="center">
 	Kosos is a small hobby OS made completely from scratch, it can read/write fules using a FAT-like filesystem layout.
